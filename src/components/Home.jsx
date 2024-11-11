@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import DocumentCard from '../components/DocumentCard';
 import Filters from '../components/Filters';
+import Pagination from '../components/Pagination';
 import { searchDocuments } from '../services/api';
 
 export const Home = () => {
@@ -9,15 +10,18 @@ export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({ documentType: '', year: '' });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const handleSearch = async (query) => {
     setLoading(true);
     setError(null);
     try {
-      const results = await searchDocuments(query);
+      const results = await searchDocuments(query, filters, currentPage);
       setDocuments(results);
+      setTotalPages(results.totalPages);
     } catch (err) {
-      setError("Ocurrió un error al realizar la búsqueda.");
+      setError("Ocurrio un error al realizar la busqueda.");
     } finally {
       setLoading(false);
     }
@@ -27,8 +31,17 @@ export const Home = () => {
       { title: "Introducción a IA en agricultura", authors: "A. Pérez, B. Gómez", summary: "Estudio sobre aplicaciones de IA en la agricultura." },
       { title: "Desarrollo sostenible y tecnología", authors: "C. Ruiz", summary: "Análisis de la tecnología en el desarrollo sostenible." },
     ];*/
-
   };
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    handleSearch(); // Realiza la busqueda en la nueva pagina
+  };
+  
   return (
     <div className="home">
       <h1>Plataforma Inteligente de Consulta Académica</h1>
@@ -46,6 +59,11 @@ export const Home = () => {
           />
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   )
 }
