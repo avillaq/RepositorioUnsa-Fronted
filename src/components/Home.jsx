@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import SearchBar from '../components/SearchBar';
-import DocumentCard from '../components/DocumentCard';
-import Filters from '../components/Filters';
-import Pagination from '../components/Pagination';
+import { SearchBar } from '../components/SearchBar';
+import { DocumentCard } from '../components/DocumentCard';
+import { Filters } from '../components/Filters';
+import { Pagination } from '../components/Pagination';
 import { searchDocuments } from '../services/api';
 
 export const Home = () => {
@@ -41,7 +41,7 @@ export const Home = () => {
     setCurrentPage(newPage);
     handleSearch(); // Realiza la busqueda en la nueva pagina
   };
-  
+
   return (
     <div className="home">
       <h1>Plataforma Inteligente de Consulta Académica</h1>
