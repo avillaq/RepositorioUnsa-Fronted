@@ -1,27 +1,38 @@
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import DocumentCard from '../components/DocumentCard';
+import { searchDocuments } from '../services/api';
 
 export const Home = () => {
   const [documents, setDocuments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Pequeña simulación de búsqueda
-  const handleSearch = (query) => {
-    // Aqui se va a hacer la búsqueda y devolver los resultados
-    // TODO: Implementar la búsqueda de documentos
-    console.log("Buscando:", query);
+  const handleSearch = async (query) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await searchDocuments(query);
+      setDocuments(results);
+    } catch (err) {
+      setError("Ocurrió un error al realizar la búsqueda.");
+    } finally {
+      setLoading(false);
+    }
 
-    // Pequeños datos de ejemplo
-    const mockDocuments = [
+    // Ejemplo de como son los datos que se obtienen de la API
+    /*const mockDocuments = [
       { title: "Introducción a IA en agricultura", authors: "A. Pérez, B. Gómez", summary: "Estudio sobre aplicaciones de IA en la agricultura." },
       { title: "Desarrollo sostenible y tecnología", authors: "C. Ruiz", summary: "Análisis de la tecnología en el desarrollo sostenible." },
-    ];
-    setDocuments(mockDocuments);
+    ];*/
+
   };
   return (
     <div className="home">
       <h1>Plataforma Inteligente de Consulta Académica</h1>
       <SearchBar onSearch={handleSearch} />
+      {loading && <p>Cargando resultados...</p>}
+      {error && <p className="error">{error}</p>}
       <div className="document-list">
         {documents.map((doc, index) => (
           <DocumentCard
