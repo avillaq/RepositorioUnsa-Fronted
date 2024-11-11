@@ -49,3 +49,15 @@
   margin: 5px 0;
   color: #555;
 }
+
+.home {
+  text-align: center;
+  padding: 20px;
+}
+
+.document-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
