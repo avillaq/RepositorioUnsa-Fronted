@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import DocumentCard from '../components/DocumentCard';
+import Filters from '../components/Filters';
 import { searchDocuments } from '../services/api';
 
 export const Home = () => {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [filters, setFilters] = useState({ documentType: '', year: '' });
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -31,6 +33,7 @@ export const Home = () => {
     <div className="home">
       <h1>Plataforma Inteligente de Consulta Académica</h1>
       <SearchBar onSearch={handleSearch} />
+      <Filters onFilterChange={handleFilterChange} />
       {loading && <p>Cargando resultados...</p>}
       {error && <p className="error">{error}</p>}
       <div className="document-list">
