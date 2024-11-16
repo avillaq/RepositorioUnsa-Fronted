@@ -44,7 +44,8 @@ export const Home = () => {
 
   return (
     <div className="home">
-      <h1 className='text-2xl'>Plataforma Inteligente de Consulta Académica</h1>
+      <h1 className='text-2xl'></h1>
+      <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl">Plataforma Inteligente de Consulta Académica</h1>
       <br />
       <SearchBar onSearch={handleSearch} />
       <Filters onFilterChange={handleFilterChange} />
