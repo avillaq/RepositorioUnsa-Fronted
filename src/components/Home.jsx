@@ -34,7 +34,7 @@ export const Home = () => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-    handleSearch(); // Realiza la busqueda en la nueva pagina
+    handleSearch();
   };
 
   const tabs = [
@@ -51,19 +51,16 @@ export const Home = () => {
   ];
 
   return (
-    <div className="home">
+    <div className="home flex justify-center flex-col items-center">
       <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl">Plataforma Inteligente de Consulta Académica</h1>
-      <br />
 
-      <Tabs tabs={tabs} />
-
-      <div className="flex">
-
-         <aside id="sidebar-multi-level-sidebar" className="w-64 h-screen bg-gray-50 dark:bg-gray-800">
-          <div className="h-full px-3 py-4 overflow-y-auto">
+      <div className="flex lg:w-9/12	xl:w-8/12">
+        <aside id="sidebar-multi-level-sidebar" className="w-64 bg-gray-50 h-fit mt-32">
+          <div className="px-3 py-4 overflow-y-auto">
+            <h1>Filtros</h1>
             <ul className="space-y-2 font-medium">
               <li>
-                <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown1" data-collapse-toggle="dropdown1">
+                <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown1" data-collapse-toggle="dropdown1">
                   <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Coleccion</span>
                   <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
@@ -71,18 +68,18 @@ export const Home = () => {
                 </button>
                 <ul id="dropdown1" className="hidden py-2 space-y-2">
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Products</a>
                   </li>
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Billing</a>
                   </li>
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Invoice</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown2" data-collapse-toggle="dropdown2">
+                <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown2" data-collapse-toggle="dropdown2">
                   <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Fecha</span>
                   <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
@@ -90,21 +87,23 @@ export const Home = () => {
                 </button>
                 <ul id="dropdown2" className="hidden py-2 space-y-2">
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Products</a>
                   </li>
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Billing</a>
                   </li>
                   <li>
-                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+                    <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Invoice</a>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
-        </aside> 
+        </aside>
 
         <div className="flex-1 p-4">
+          <Tabs tabs={tabs} />
+
           <Filters onFilterChange={handleFilterChange} />
           {loading && <p>Cargando resultados...</p>}
           {error && <p className="error">{error}</p>}
