@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const Filters = () => {
+export const Filters = ({ onFilterChange }) => {
   const [documentType, setDocumentType] = useState('');
   const [year, setYear] = useState('');
 
