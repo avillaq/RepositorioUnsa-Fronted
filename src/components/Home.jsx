@@ -12,6 +12,7 @@ export const Home = () => {
   const [filters, setFilters] = useState({ documentType: '', year: '' });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedTab, setSelectedTab] = useState('basic-search');
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -25,12 +26,6 @@ export const Home = () => {
     } finally {
       setLoading(false);
     }
-
-    // Ejemplo de como son los datos que se obtienen de la API
-    /*const mockDocuments = [
-      { title: "Introducción a IA en agricultura", authors: "A. Pérez, B. Gómez", summary: "Estudio sobre aplicaciones de IA en la agricultura." },
-      { title: "Desarrollo sostenible y tecnología", authors: "C. Ruiz", summary: "Análisis de la tecnología en el desarrollo sostenible." },
-    ];*/
   };
 
   const handleFilterChange = (newFilters) => {
@@ -42,6 +37,10 @@ export const Home = () => {
     handleSearch(); // Realiza la busqueda en la nueva pagina
   };
 
+  const handleTabClick = (tab) => {
+    setSelectedTab(tab);
+  };
+
   return (
     <div className="home">
       <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl">Plataforma Inteligente de Consulta Académica</h1>
@@ -51,23 +50,44 @@ export const Home = () => {
         <div className="mb-4">
           <ul className="flex flex-wrap justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
             <li className="me-2" role="presentation">
-              <button className="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Busqueda Basica</button>
+              <button
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${selectedTab === 'basic-search' ? 'text-blue-700 border-blue-700' : 'text-gray-500 border-transparent hover:text-blue-600 hover:border-blue-300'}`}
+                id="basic-search-tab"
+                data-tabs-target="#basic-search"
+                type="button"
+                role="tab"
+                aria-controls="basic-search"
+                aria-selected={selectedTab === 'basic-search'}
+                onClick={() => handleTabClick('basic-search')}
+              >
+                Busqueda Basica
+              </button>
             </li>
             <li className="me-2" role="presentation">
-              <button className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Busqueda Avanzada</button>
+              <button
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${selectedTab === 'advanced-search' ? 'text-blue-700 border-blue-700' : 'text-gray-500 border-transparent hover:text-blue-600 hover:border-blue-300'}`}
+                id="advanced-search-tab"
+                data-tabs-target="#advanced-search"
+                type="button"
+                role="tab"
+                aria-controls="advanced-search"
+                aria-selected={selectedTab === 'advanced-search'}
+                onClick={() => handleTabClick('advanced-search')}
+              >
+                Busqueda Avanzada
+              </button>
             </li>
           </ul>
         </div>
         <div id="default-tab-content">
-          <div id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div id="basic-search" role="tabpanel" aria-labelledby="basic-search-tab" className={selectedTab === 'basic-search' ? '' : 'hidden'}>
             <SearchBar onSearch={handleSearch} />
           </div>
-          <div id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-            <p className="text-sm text-gray-500">This is some placeholder content the <strong className="font-medium text-gray-800">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+          <div id="advanced-search" role="tabpanel" aria-labelledby="advanced-search-tab" className={selectedTab === 'advanced-search' ? '' : 'hidden'}>
+            <p className="text-sm text-gray-500">Busqueda Avanzada Aqui.</p>
           </div>
         </div>
       </div>
-
 
       <Filters onFilterChange={handleFilterChange} />
       {loading && <p>Cargando resultados...</p>}
