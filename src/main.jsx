@@ -5,6 +5,7 @@ import { Home } from './components/Home';
 import { SearchResults } from './pages/SearchResults';
 import { Profile } from './pages/Profile';
 import './styles/global.css';
+import "./index.css";
 
 const router = createBrowserRouter([
   {
