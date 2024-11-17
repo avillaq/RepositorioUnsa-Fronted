@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SearchBar } from '../components/SearchBar';
-import { DocumentCard } from '../components/DocumentCard';
+import { DocumentItem } from './DocumentItem';
 import { Filters } from '../components/Filters';
 import { Pagination } from '../components/Pagination';
 import { searchDocuments } from '../services/api';
@@ -69,7 +69,7 @@ export const Home = () => {
           {error && <p className="error">{error}</p>}
           <div className="document-list">
             {documents.map((doc, index) => (
-              <DocumentCard
+              <DocumentItem
                 key={index}
                 title={doc.title}
                 authors={doc.authors}
