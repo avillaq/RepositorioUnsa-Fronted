@@ -21,41 +21,6 @@ body {
   padding: 0;
 }
 
-
-.document-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.document-card:hover {
-  background-color: #f9f9f9;
-}
-
-.document-card h3 {
-  margin: 0;
-  color: #333;
-}
-
-.document-card p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.home {
-  text-align: center;
-  padding: 20px;
-}
-
-.document-list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
 .filters {
   display: flex;
   gap: 15px;
