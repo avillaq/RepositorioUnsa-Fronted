@@ -63,7 +63,7 @@ export const Home = () => {
           </div>
         </aside>
 
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-3">
           <Tabs tabs={tabs} />
 
           {loading && <p>Cargando resultados...</p>}
