@@ -71,9 +71,11 @@ export const Home = () => {
             {documents.map((doc, index) => (
               <DocumentItem
                 key={index}
+                id={doc.id}
                 title={doc.title}
                 authors={doc.authors}
-                summary={doc.summary}
+                editor={doc.editor}
+                year={doc.year}
               />
             ))}
           </div>
