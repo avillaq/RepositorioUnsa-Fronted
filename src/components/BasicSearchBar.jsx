@@ -2,7 +2,7 @@ import { useState, useId } from 'react';
 
 const options = ["Titulo", "Autor"];
 
-export const SearchBar = ({ onSearch }) => {
+export const BasicSearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState(options[0]);
   

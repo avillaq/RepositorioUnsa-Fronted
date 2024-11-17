@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { SearchBar } from '../components/SearchBar';
+import { BasicSearchBar } from '../components/BasicSearchBar';
+import { AdvancedSearchBar } from './AdvancedSearchBar';
 import { DocumentItem } from './DocumentItem';
 import { Filters } from '../components/Filters';
 import { Pagination } from '../components/Pagination';
@@ -41,12 +42,12 @@ export const Home = () => {
     {
       id: 'basic-search',
       label: 'Busqueda Basica',
-      content: <SearchBar onSearch={handleSearch} />,
+      content: <BasicSearchBar onSearch={handleSearch} />,
     },
     {
       id: 'advanced-search',
       label: 'Busqueda Avanzada',
-      content: <p className="text-sm text-gray-500">Busqueda Avanzada Aqui.</p>,
+      content: <AdvancedSearchBar onSearch={handleSearch}/>,
     },
   ];
 
