@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-const options = ["Titulo", "Autor"];
-
-export const SearchBar = ({ onSearch }) => {
+export const SearchBar = ({ onSearch , options}) => {
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState(options[0]);
 
@@ -12,7 +10,7 @@ export const SearchBar = ({ onSearch }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    onSearch(query); // Llama a la función onSearch que se pasará como prop desde la página
+    onSearch(query); 
   };
 
   return (
