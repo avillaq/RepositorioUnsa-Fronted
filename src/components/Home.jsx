@@ -51,7 +51,7 @@ export const Home = () => {
   ];
 
   return (
-    <div className="home flex justify-center flex-col items-center">
+    <div className="flex justify-center flex-col items-center p-5">
       <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl">Plataforma Inteligente de Consulta Académica</h1>
 
       <div className="flex lg:w-9/12	xl:w-8/12">
@@ -67,7 +67,7 @@ export const Home = () => {
 
           {loading && <p>Cargando resultados...</p>}
           {error && <p className="error">{error}</p>}
-          <div className="document-list">
+          <div className="flex flex-col mt-5">
             {documents.map((doc, index) => (
               <DocumentItem
                 key={index}
@@ -76,6 +76,7 @@ export const Home = () => {
                 authors={doc.authors}
                 editor={doc.editor}
                 year={doc.year}
+                faculty={doc.faculty}
               />
             ))}
           </div>
