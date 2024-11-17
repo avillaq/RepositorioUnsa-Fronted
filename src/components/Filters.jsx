@@ -16,7 +16,7 @@ export const Filters = ({ onFilterChange }) => {
 
   return (
     <>
-{/*       <div className="filters">
+      {/*       <div className="filters">
         <label>
           Tipo de Documento:
           <select value={documentType} onChange={handleDocumentTypeChange}>
@@ -35,7 +35,7 @@ export const Filters = ({ onFilterChange }) => {
           />
         </label>
       </div> */}
-{/* 
+      {/* 
       <div id="accordion-collapse" data-accordion="collapse">
         <h2 id="accordion-collapse-heading-1">
           <button type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
@@ -85,6 +85,46 @@ export const Filters = ({ onFilterChange }) => {
           </div>
         </div>
       </div> */}
+      <ul className="space-y-2 font-medium">
+        <li>
+          <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown1" data-collapse-toggle="dropdown1">
+            <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Coleccion</span>
+            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+            </svg>
+          </button>
+          <ul id="dropdown1" className="hidden py-2 space-y-2">
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Products</a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Billing</a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Invoice</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown2" data-collapse-toggle="dropdown2">
+            <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Fecha</span>
+            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+            </svg>
+          </button>
+          <ul id="dropdown2" className="hidden py-2 space-y-2">
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Products</a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Billing</a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Invoice</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </>
   )
 }
